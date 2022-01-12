@@ -37,7 +37,6 @@ public class UserDAO {
 		List<User> usersList = new LinkedList<User>();
 
 		Connection con = UserDAO.getConnection();
-		System.out.println(con);
 
 		try {
 			PreparedStatement ps = con.prepareStatement("select * from users");
@@ -53,8 +52,7 @@ public class UserDAO {
 				user.setMobileNumber(Long.parseLong(rs.getString(5)));
 
 				java.sql.Date sqlDate = rs.getDate(3);
-				java.util.Date date = sqlDate;
-				user.setDateOfBirth(date);
+				user.setDateOfBirth(sqlDate);
 				
 //				String mydate = "1999-01-07";
 //				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
@@ -71,10 +69,80 @@ public class UserDAO {
 				usersList.add(user);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
+//		con.close();
 		return usersList;
+	}
+	
+	public static int createNewUser(User user) {
+		
+		int status = 0;
+		
+		
+		Connection con = UserDAO.getConnection();
+		
+		try {
+			PreparedStatement ps = con.prepareStatement("insert into users values(?,?,?,?,?)");
+			ps.setString(1, user.getFirstName());
+			ps.setString(2, user.getLastName());
+			ps.setString(3, String.valueOf(user.getDateOfBirth()));
+			ps.setString(4, user.getCity());
+			ps.setString(5, String.valueOf(user.getMobileNumber()));
+			
+			status = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+//		con.close();
+		return status;
+	}
+	
+	public static int deleteUser(long mobileNumber) {
+		
+		int status = 0;
+		
+		Connection con = UserDAO.getConnection();
+		
+		try {
+			PreparedStatement ps = con.prepareStatement("delete from users where mobileNumber=?");
+			ps.setString(1, String.valueOf(mobileNumber));
+			
+			status = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+//		con.close();
+		return status;
+	}
+	
+	public static int updateUser(User user) {
+		
+		int status = 0;
+		
+		Connection con = UserDAO.getConnection();
+		
+		try {
+			PreparedStatement ps = con.prepareStatement("update users set firstName=?, lastName=?, dateOfBirth=?, City=? where mobileNumber=?");
+			
+			ps.setString(1, user.getFirstName());
+			ps.setString(2, user.getLastName());
+			ps.setDate(3, user.getDateOfBirth());
+			ps.setString(4, user.getCity());
+			ps.setString(5, String.valueOf(user.getMobileNumber()));
+			
+			status = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+//		con.close();
+		return status;
 	}
 }
