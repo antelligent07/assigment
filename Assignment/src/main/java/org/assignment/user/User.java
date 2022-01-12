@@ -62,4 +62,10 @@ public class User {
 	public void setMobileNumber(long mobileNumber) {
 		this.mobileNumber = mobileNumber;
 	}
+
+	@Override
+	public String toString() {
+		return "User [firstName=" + firstName + ", lastName=" + lastName + ", dateOfBirth=" + dateOfBirth + ", city="
+				+ city + ", mobileNumber=" + mobileNumber + "]";
+	}
 }
