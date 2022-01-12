@@ -40,7 +40,6 @@ public class CreateUser extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		System.out.println("Status:" + status);
 		if (status > 0) {
 			out.println("<h3>User added !!!</h3>");
 			request.getRequestDispatcher("index.html").include(request, response);

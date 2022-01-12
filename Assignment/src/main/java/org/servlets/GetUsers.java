@@ -40,7 +40,7 @@ public class GetUsers extends HttpServlet {
 			out.print("<tr><td>" + user.getFirstName() + "</td><td>" + user.getLastName() + "</td><td>"
 					+ user.getDateOfBirth() + "</td><td>" + user.getCity() + "</td><td>" + user.getMobileNumber()
 					+ "</td><td><a href='updateUser?mobileNumber=" + user.getMobileNumber()
-					+ "'>edit</a></td><td><a href='deleteUser?mobileNumber=" + user.getMobileNumber()
+					+ "'>edit</a></td><td><a href='DeleteUser?mobileNumber=" + user.getMobileNumber()
 					+ "'>delete</a></td></tr>");
 		}
 
