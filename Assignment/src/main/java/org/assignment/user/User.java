@@ -1,6 +1,8 @@
 package org.assignment.user;
 
-import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.sql.Date;
 
 public class User {
 
@@ -14,13 +16,37 @@ public class User {
 
 	}
 
-	public User(String firstName, String lastName, Date dateOfBirth, String city, long mobileNumber) {
+	public User(String firstName, String lastName, String dateOfBirth, String city, String mobileNumber) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.dateOfBirth = dateOfBirth;
+		
+//		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//		java.util.Date date = null;
+//		try {
+//			date = dateFormat.parse(dateOfBirth);
+//		} catch (ParseException e) {
+//			e.printStackTrace();
+//		}
+////		this.dateOfBirth = new Date(dateFormat.format(date));
+//		String newdate = dateFormat.format(date);
+////		System.out.println("new date:" + newdate);
+////		try {
+////			this.dateOfBirth = dateFormat.parse(newdate);
+////		} catch (ParseException e) {
+////			// TODO Auto-generated catch block
+////			e.printStackTrace();
+////		}
+//		
+//		try {
+//			this.dateOfBirth = new SimpleDateFormat("yyyy-MM-dd").parse(dateOfBirth);
+//		} catch (ParseException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		this.dateOfBirth = Date.valueOf(dateOfBirth);
 		this.city = city;
-		this.mobileNumber = mobileNumber;
+		this.mobileNumber = Long.parseLong(mobileNumber);
 	}
 
 	public String getFirstName() {
