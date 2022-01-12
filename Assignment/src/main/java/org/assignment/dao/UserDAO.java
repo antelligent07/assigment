@@ -42,10 +42,10 @@ public class UserDAO {
 			PreparedStatement ps = con.prepareStatement("select * from users");
 			ResultSet rs = ps.executeQuery();
 			
-			User user = new User();
-			
 			while(rs.next()) {
 
+				User user = new User();
+				
 				user.setFirstName(rs.getString(1));
 				user.setLastName(rs.getString(2));
 				user.setCity(rs.getString(4));
