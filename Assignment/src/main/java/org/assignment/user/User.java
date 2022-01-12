@@ -44,7 +44,12 @@ public class User {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-		this.dateOfBirth = Date.valueOf(dateOfBirth);
+		try {
+			this.dateOfBirth = Date.valueOf(dateOfBirth);
+		} catch (java.lang.IllegalArgumentException e) {
+			System.out.println("Date exception");
+		}
+		
 		this.city = city;
 		this.mobileNumber = Long.parseLong(mobileNumber);
 	}
