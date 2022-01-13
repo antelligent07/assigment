@@ -8,7 +8,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-//import java.sql.Statement;
+import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 //import java.util.Date;
@@ -21,7 +21,7 @@ public class UserDAO {
 	private static String dbPassword = "root";
 	private static String dbName = "userdb";
 	private static String dbAddress = "jdbc:mysql://localhost:3306/" + dbName + "?createDatabaseIfNotExist=true";
-	private static String dbTableName = "testing";
+	private static String dbTableName = "users";
 	
 	// Connection with Database
 	public static Connection getConnection() {
@@ -54,8 +54,8 @@ public class UserDAO {
 			        + " city VARCHAR(30),"
 			        + " mobileNumber VARCHAR(30) NOT NULL, PRIMARY KEY (mobileNumber) )";
 
-			PreparedStatement ps = con.prepareStatement(createTable);
-			ResultSet rs = ps.executeQuery();
+			Statement stmt = con.createStatement();
+			stmt.execute(createTable);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
