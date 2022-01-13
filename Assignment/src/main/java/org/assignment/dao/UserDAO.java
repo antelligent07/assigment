@@ -3,7 +3,6 @@ package org.assignment.dao;
 import org.assignment.user.*;
 
 import java.sql.Connection;
-//import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,7 +10,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-//import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -31,7 +29,6 @@ public class UserDAO {
 		try {
 
 			Class.forName("com.mysql.cj.jdbc.Driver");
-//			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + dbName, dbUser, dbPassword);
 			con = DriverManager.getConnection(dbAddress, dbUser, dbPassword);
 
 		} catch (Exception e) {
@@ -88,11 +85,11 @@ public class UserDAO {
 
 				usersList.add(user);
 			}
+			con.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
-//		con.close();
 		return usersList;
 	}
 
@@ -114,11 +111,11 @@ public class UserDAO {
 
 			status = ps.executeUpdate();
 
+			con.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
-//		con.close();
 		return status;
 	}
 
@@ -135,11 +132,12 @@ public class UserDAO {
 
 			status = ps.executeUpdate();
 
+			con.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-//		con.close();
+		
 		return status;
 	}
 
@@ -162,11 +160,12 @@ public class UserDAO {
 
 			status = ps.executeUpdate();
 
+			con.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-//		con.close();
+		
 		return status;
 	}
 }

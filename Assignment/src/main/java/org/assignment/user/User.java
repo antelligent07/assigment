@@ -21,29 +21,6 @@ public class User {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		
-//		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-//		java.util.Date date = null;
-//		try {
-//			date = dateFormat.parse(dateOfBirth);
-//		} catch (ParseException e) {
-//			e.printStackTrace();
-//		}
-////		this.dateOfBirth = new Date(dateFormat.format(date));
-//		String newdate = dateFormat.format(date);
-////		System.out.println("new date:" + newdate);
-////		try {
-////			this.dateOfBirth = dateFormat.parse(newdate);
-////		} catch (ParseException e) {
-////			// TODO Auto-generated catch block
-////			e.printStackTrace();
-////		}
-//		
-//		try {
-//			this.dateOfBirth = new SimpleDateFormat("yyyy-MM-dd").parse(dateOfBirth);
-//		} catch (ParseException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
 		try {
 			this.dateOfBirth = Date.valueOf(dateOfBirth);
 		} catch (java.lang.IllegalArgumentException e) {
