@@ -9,6 +9,13 @@ Technology used:
   Backend: Java, Java Servlet
   Database: MySQL
   
+Softwares required:
+  1. Java JDK 1.8 or higher
+  2. IDE (Eclipse or Intellij Idea or any other)
+  3. MySQL database
+  4. MySQL JDBC driver
+  5. Apache Tomcat server
+  
 Steps to run the application:
   1. Clone the repository on desired location.
   2. Open any IDE like Eclipse, Intellij Idea etc.
